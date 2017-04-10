@@ -1,0 +1,25 @@
+public class Main
+{
+	public void main()
+	{
+		int a = 0;
+		int b = 3;
+		
+		int a;
+		int a = 3;
+		
+		int c = 1, a;
+		
+		{
+			int a = 4;
+		}
+	}
+}
+
+//public class Main
+//{
+//	public void hello()
+//	{
+//	}
+//}
+

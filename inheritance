@@ -1,0 +1,93 @@
+public class Main extends Base
+{
+	public void main()
+	{
+		Main a = new Main();
+		
+		//Vemos si podemos acceder al atributo en la clase base.
+		int b = a.b;
+		//Vemos si podemos acceder a él desde un MI, obteniendo su tipo.
+		System.out.println(a.b);
+		
+		Perro p = new Perro(true);
+		//Ejemplo similar al anterior.	
+		System.out.println(p.a);
+		
+		//Aquí debería llamar al sayHi de Animal, pues no está en perrol
+		p.sayHi();
+		//Similar a lo anterior pero más complejo.
+		System.out.println(p.complicatedCalc(5, 10));
+		
+		//Debería imprimir true, correspondiente al getsCalled de perro y no animal.
+		System.out.println(p.getsCalled());
+		
+		//Se debe chequear que exista el constructor.
+		Animal anPerro = new Perro();
+		//Debería ser "false"
+		System.out.println(anPerro.getsCalled());
+		Perro perroAn = (Perro)anPerro;
+		//Debería ser "true";
+		System.out.println(perroAn.getsCalled());
+		System.out.println(perroAn.a);
+	}
+}
+
+public class Base
+{
+	protected int b = 3;
+	//NOTA: Debería crearse un constructor por defecto.
+}
+
+public class Animal
+{
+	public char a = 'a';
+	public Animal()
+	{
+		System.out.println(this.a);
+	}
+	
+	public int complicatedCalc(int a, int b)
+	{
+		return a*b&5^50;
+	}
+	public void sayHi()
+	{
+		System.out.println("Hi there");
+	}
+	
+	public boolean getsCalled()
+	{
+		return false;
+	}
+	
+	public Animal(char b)
+	{
+		this(true);
+		this.a = b;		
+	}
+	
+	public Animal(boolean b)
+	{
+		System.out.println("Se llama el constructor de animal con boolean");
+	}
+}
+
+public class Perro extends Animal
+{
+	public Perro()
+	{
+		super('z');
+	}
+	
+	public Perro(boolean a)
+	{		
+		//Cil DEBE llamar al constructor por defecto de animal, si éste existe.
+		//Si no, debe lanzar un error diciendo que se debe llamar a alguno de los
+		//constructores de Animal.
+		System.out.println("Se creo un perro");
+	}
+	
+	public boolean getsCalled(){
+		return true;
+	}
+}

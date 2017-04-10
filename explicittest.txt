@@ -1,0 +1,45 @@
+public class Main extends Base
+{
+	public void main()
+	{
+		Main a = new Main();
+		int b = a.b;
+		System.out.println(b);
+		Perro p = new Perro(true);
+		char asd = p.a;
+		System.out.println(p.a);
+		p.sayHi();
+		System.out.println(p.complicatedCalc(5, 10));
+	}
+}
+
+public class Base
+{
+	protected int b = 3;
+}
+
+public class Animal
+{
+	public char a = 'a';
+	public Animal()
+	{
+		System.out.println(this.a);
+	}
+	
+	public int complicatedCalc(int a, int b)
+	{
+		return a*b&5^50;
+	}
+	public void sayHi()
+	{
+		System.out.println("Hi there");
+	}
+}
+
+public class Perro extends Animal
+{
+	public Perro(boolean a)
+	{
+		System.out.println("Se creo un perro");
+	}
+}
